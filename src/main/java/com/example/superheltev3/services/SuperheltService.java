@@ -26,7 +26,7 @@ public class SuperheltService {
         return superheltRepository.createSuperHero(firstName, lastName, alias, powers, yearOfOrigin, powerlvl, race);
     }
 
-    public void deleteSuperhero(String navn) {
-        superheltRepository.deleteSuperheroes(navn);
+    public List<Superheroes> deleteSuperhero(String navn) {
+        return superheltRepository.deleteSuperheroes(navn);
     }
 }

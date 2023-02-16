@@ -52,13 +52,15 @@ public class SuperheltRepository {
         return hero;
     }
 
-    public Superheroes deleteSuperheroes(String navn) {
-        for (Superheroes superheroes : superHeroesDB) {
+    public List<Superheroes> deleteSuperheroes(String navn) {
+        List<Superheroes> searchResults = new ArrayList<>();
+        searchResults = searchSuperhero(navn);
+
+        for (Superheroes superheroes : searchResults) {
             if (superheroes.getFirstName().toLowerCase().contains(navn.toLowerCase())) {
-                if (superheroes.getFirstName().contains(navn)) {
-                    getSuperHeroesDB().remove(superheroes);
-                }
+                getSuperHeroesDB().remove(superheroes);
             }
-        }return superheroes;
+        }
+        return searchResults;
     }
 }

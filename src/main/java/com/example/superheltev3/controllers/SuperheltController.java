@@ -11,9 +11,10 @@ import com.example.superheltev3.services.SuperheltService;
 import java.util.List;
 
 @Controller
-@RequestMapping( "superhelte")
+@RequestMapping("superhelte")
 public class SuperheltController {
     private SuperheltService superheltService;
+
     public SuperheltController(SuperheltService superheltService) {
         this.superheltService = superheltService;
     }
@@ -21,27 +22,16 @@ public class SuperheltController {
     @RequestMapping("/")
     public ResponseEntity<?> printSuperhelte(@RequestParam(required = false) String format) {
         List<Superheroes> superhelte = superheltService.getSuperhelte();
-        if (format != null && format.equals("html")) {
-            StringBuilder html = new StringBuilder();
-            html.append("<table>");
-            html.append("<tr><th>Superhero Name</th><th>Real Name</th><th>Creation Year</th><th>Superpower</th>" +
-                    "<th>Is Human</th><th>Power</th></tr>");
-            for (Superheroes superhero : superhelte) {
-                html.append("<tr><td>").append(superhero.getFirstName()).append("</td>");
-                html.append("<tr><td>").append(superhero.getLastName()).append("</td>");
-                html.append("<td>").append(superhero.getAlias()).append("</td>");
-                html.append("<td>").append(superhero.getYearOfOrigin()).append("</td>");
-                html.append("<td>").append(superhero.getPowerlvl()).append("</td>");
-                html.append("<td>").append(superhero.getRace()).append("</td>");
-                html.append("<td>").append(superhero.getPowers()).append("</td></tr>");
-            }
-            html.append("</table>");
-            HttpHeaders headers = new HttpHeaders();
-            headers.add("content-type", "text/html");
-            return new ResponseEntity<>(html.toString(), headers, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(superhelte, HttpStatus.OK);
+        for (Superheroes superhero : superhelte) {
+            superhero.getFirstName();
+            superhero.getLastName();
+            superhero.getAlias();
+            superhero.getYearOfOrigin();
+            superhero.getPowerlvl();
+            superhero.getRace();
+            superhero.getPowers();
         }
+            return new ResponseEntity<>(superhelte, HttpStatus.OK);
     }
 
     @RequestMapping(path = "/{navn}")
@@ -58,7 +48,7 @@ public class SuperheltController {
 
     @DeleteMapping(path = "/slet/{navn}")
     public ResponseEntity<List<Superheroes>> sletSuperhelt(@PathVariable String navn) {
-        superheltService.deleteSuperhero(navn);
-        return new ResponseEntity(HttpStatus.OK);
+        List<Superheroes> slettetSuperhelt= superheltService.deleteSuperhero(navn);
+        return new ResponseEntity(slettetSuperhelt,HttpStatus.OK);
     }
 }
