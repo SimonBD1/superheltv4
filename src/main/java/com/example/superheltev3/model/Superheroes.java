@@ -1,104 +1,46 @@
 package com.example.superheltev3.model;
 
 public class Superheroes {
+        private int heroID;
+        private String heroName;
+        private String realName;
+        private int creationYear;
+        private int superpowerID;
+        private int cityID;
 
-    private String firstName;
-    private String lastName;
-    private String alias;
-    private String powers;
-    private int yearOfOrigin;
-    private double powerlvl;
-    private boolean race;
+        public Superheroes(int heroID, String heroName, String realName, int creationYear, int superpowerID, int cityID) {
+            this.heroID = heroID;
+            this.heroName = heroName;
+            this.realName = realName;
+            this.creationYear = creationYear;
+            this.superpowerID = superpowerID;
+            this.cityID = cityID;
+        }
+        public Superheroes(){
 
-    public Superheroes(String firstName, String lastName, String alias, String powers, int yearOfOrigin, double powerlvl, boolean race) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.alias = alias;
-        this.powers = powers;
-        this.yearOfOrigin = yearOfOrigin;
-        this.powerlvl = powerlvl;
-        this.race = race;
-    }
+        }
 
+        public int getHeroID() {
+            return heroID;
+        }
 
-    public String getFirstName() {
-        return firstName;
-    }
+        public String getHeroName() {
+            return heroName;
+        }
 
-    public void setFirstName(String newName) {
-        this.firstName = newName;
-    }
+        public String getRealName() {
+            return realName;
+        }
 
+        public int getCreationYear() {
+            return creationYear;
+        }
 
-    public String getLastName() {
-        return lastName;
-    }
+        public int getSuperpowerID() {
+            return superpowerID;
+        }
 
-    public void setLastName(String LName) {
-        this.lastName = LName;
-    }
-
-
-    public String getAlias() {
-        return alias;
-    }
-
-    public void setAlias(String newAlias) {
-        this.alias = newAlias;
-    }
-
-
-    public String getPowers() {
-        return powers;
-    }
-
-    public void setPowers(String newPowers) {
-        this.powers = newPowers;
-    }
-
-
-    public int getYearOfOrigin() {
-        return yearOfOrigin;
-    }
-
-    public void setYearOfOrigin(int newYearOfOrigin) {
-        this.yearOfOrigin = Integer.parseInt(String.valueOf(newYearOfOrigin));
-    }
-
-
-    public double getPowerlvl() {
-        return powerlvl;
-    }
-
-    public void setPowerlvl(double newPowerlvl) {
-        this.powerlvl = newPowerlvl;
-    }
-
-
-    public boolean getRace() {
-        return race;
-    }
-
-    public void setRace(boolean newRace) {
-        this.race = newRace;
-    }
-
-
-    @Override
-    public String toString() {
-        return "\n" + firstName + ' ' + lastName + " bedre kendt som " + alias + "\n Superkræfter er: " + powers +
-                "\n Først set i år " + yearOfOrigin +
-                "\n Styrkeniveau er på: " + powerlvl +
-                "\n Menneskestatus: " + raceCheck() +
-                "\n---------";
-    }
-
-    public String raceCheck() {
-        if (race == true) {
-            return "Menneskelig";
-        } else {
-            return "Ikke menneskelig/alien";
+        public int getCityID() {
+            return cityID;
         }
     }
-}
-
